@@ -67,6 +67,12 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
+  <!-- PWA connection -->
+  <link rel="manifest" href="manifest.json"/>
+  <script src="serviceworker.js"></script>
+
 </head>
 <body class="boxed-layout bg-img-fixed pt-40 pb-40 pt-sm-0" data-bg-img="images/pattern/pt19.jpg">
 <div id="wrapper">
@@ -875,6 +881,29 @@
 <script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.parallax.min.js"></script> 
 <script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js"></script> 
 <script type="text/javascript" src="js/revolution-slider/js/extensions/revolution.extension.video.min.js"></script>
+
+<!-- PWA COnnection -->
+<script>
+  // Script for Service Worker
+  
+  window.addEventListener('load', () => {
+  registerSW();
+  });
+
+  // Register the Service Worker
+  async function registerSW() {
+  if ('serviceWorker' in navigator) {
+      try {
+      await navigator
+              .serviceWorker
+              .register('serviceworker.js');
+      }
+      catch (e) {
+      console.log('SW registration failed');
+      }
+  }
+  }        
+</script>
 </body>
 
 <!-- Mirrored from html.kodesolution.live/m/epetcare/v2.0/demo/index-boxed-mp-layout4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Sep 2021 11:13:54 GMT -->
